@@ -54,3 +54,11 @@ $$
   $$
 
   
+
+## Neural nets inference
+
+- Linear transformations are: rotation, scaling, reflection, translation, shearing
+- Data are generally more difficult to seperate in high dimensional space  because their statistics are very similar. 
+- A neural network does two thing:
+  1. Rotation by applying a linear transformation using a matrix (i.e the weights).
+  2. Squashing by applying the non-linear transformation (e.g ReLu, tanh, etc).
