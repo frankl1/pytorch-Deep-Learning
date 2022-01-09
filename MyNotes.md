@@ -62,3 +62,24 @@ $$
 - A neural network does two thing:
   1. Rotation by applying a linear transformation using a matrix (i.e the weights).
   2. Squashing by applying the non-linear transformation (e.g ReLu, tanh, etc).
+
+## Modules and architectures
+
+- ReLu - nn.ReLU(): 
+  - $ReLU(x)=(x)^+=max(0,x)$
+  - Also called *positive part* by mathematicians. 
+  - Does not care about the ampliture of the input.
+  - Variants: 
+    - nn.RReLU: $RReLU(x)=x \;if \; x \ge 0 \; otherwise \;ax$, where $a$ is randomly sample from a uniform distribution
+    - nn.PReLU: $PReLU(x) = max(0,x)+a\times min(0,x)$,  same as RReLU, but $a$ is a learnable parameter
+    - nn.Softplus: is a smooth approximation of the ReLU: 
+      - $Softplus(x)=\frac{1}{\beta}\log(1 + \exp(\beta x))$
+      - the higher is $\beta$, the more close is the function to ReLU
+    - Etc
+- Sigmoid - nn.Sigmoid()
+  - $Sigmoid(x)=\sigma (x) = \frac{1}{1+expo(-x)}$
+- Tanh - nn.Tanh()
+  - $Tanh(x)=tanh(x)=\frac{\exp(x)-\exp(-x)}{\exp(x)+\exp(-x)}$
+  - very similar to Sigmoid, with the adventage to be symetric 
+  - a limitation is the gradient for values that are in the flat part will be zero
+- Softmax - nn.Softmax()
