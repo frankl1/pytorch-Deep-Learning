@@ -65,6 +65,8 @@ $$
 
 ## Modules and architectures
 
+### Activation function
+
 - ReLu - nn.ReLU(): 
   - $ReLU(x)=(x)^+=max(0,x)$
   - Also called *positive part* by mathematicians. 
@@ -78,8 +80,52 @@ $$
     - Etc
 - Sigmoid - nn.Sigmoid()
   - $Sigmoid(x)=\sigma (x) = \frac{1}{1+expo(-x)}$
+  - a particular case of $softmax()$ where there are two values only and one is always $0$
 - Tanh - nn.Tanh()
   - $Tanh(x)=tanh(x)=\frac{\exp(x)-\exp(-x)}{\exp(x)+\exp(-x)}$
   - very similar to Sigmoid, with the adventage to be symetric 
   - a limitation is the gradient for values that are in the flat part will be zero
 - Softmax - nn.Softmax()
+- LogSoftmax - nn.LogSoftmax()
+  - applies log to softmax
+  - most people use this for classification
+  - less prone to vanishing gradient compared to softmax
+  - a particular case of cross-entropy
+  - more stable to numerical issues than softmax
+
+### Cost functions
+
+- MSE - nn.MSELoss()
+
+- NLL - nn.NLLLoss(): 
+
+  - Negative log likelihood loss
+
+- CE-nn.CrossEntropyLoss(): 
+
+  - combines nn.LogSoftmax() and nn.NLLLoss() in a sisngle class
+
+  - $$
+    loss(x,class)=-log(\frac{\exp(x[class])}{\sum_j \exp(x[j])})=-x[class]+log(\sum_j \exp(x[j]))
+    $$
+
+    <span style='color:red'>The objective is to maximize the output for the correct class (i.e $x[class]$) and to minimize every output of the incorrect classes **(including the correct class actually)**. Therefore $-x[class]$ is minimized and $log(\sum_j \exp(x[j]))$ is also minimized.</span>
+
+- nn.AdaptiveLogSoftmaxWithLoss(): 
+
+  - efficient softmax approximation for large ouput spaces
+
+- Ranking - nn.MarginRankingLoss(): 
+
+  - try to ensure that the output of the correct class is greater than the output of the second higher output
+
+  - $$
+    loss(x_1,x_2,y)=\max(0,-y\times(x_1-x_2)+margin)
+    $$
+
+    $x_1$ is the output of the correct class, if $y=1$ then $x_1$ should be ranked first and if $y=-1$ then $x_2$ should be ranked first.
+
+### Architectures
+
+
+
