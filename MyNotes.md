@@ -83,3 +83,8 @@ $$
   - very similar to Sigmoid, with the adventage to be symetric 
   - a limitation is the gradient for values that are in the flat part will be zero
 - Softmax - nn.Softmax()
+
+## Neural nets training
+
+### ANN - supervised learning: classification	
+
