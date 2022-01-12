@@ -129,3 +129,29 @@ $$
 
     $x_1$ is the output of the correct class, if $y=1$ then $x_1$ should be ranked first and if $y=-1$ then $x_2$ should be ranked first.
 
+## Homework 1
+
+### Regression task
+
+a) the $5$ to train a model with PyTorch: forward, loss computation, zero grad, compute grad, make step
+
+b) <span style='color:red'>not sure, to be verified</span>
+
+| Layer    | Input | Output                     |
+| -------- | ----- | -------------------------- |
+| Linear 1 | $x$   | $z_1 = W^{(1)}x+b^{(1)}$   |
+| f        | $z_1$ | $z_2 = ReLu(z_1)$          |
+| Linear 2 | $z_2$ | $z_3=W^{(2)}z_2 + b^{(2)}$ |
+| g        | $z_3$ | $\hat{y}=z_3$              |
+
+
+
+c) <span style='color:red'>not sure, to be verified</span>
+
+| Parameter | Gradient                          |
+| --------- | --------------------------------- |
+| $W^{(1)}$ | $W^{(2)}x$ if $z_1\ge 0$ else $0$ |
+| $b^{(1)}$ | $W^{(2)}$ if $z_1\ge 0$ else $0$  |
+| $W^{(2)}$ | $z_2$                             |
+| $b^{(2)}$ | $1$                               |
+
